@@ -36,187 +36,20 @@ export const trust = [
   { n: "CA · FR", l: "équipe Canada & France" },
 ] as const;
 
-/** Section 02 — the eight audit axes. b is emphasized, t follows. */
-export const audit1 = [
-  {
-    b: "Inscription et connexion",
-    t: " des trois profils : particulier, professionnel du transport, opérateur de lift",
-  },
-  {
-    b: "Vérification des professionnels",
-    t: " : pièces demandées, validation avant activation, comptes suspendus",
-  },
-  {
-    b: "Création d’une demande",
-    t: " : livraison ou déménagement, adresses, volume, étage, créneau, photos",
-  },
-  {
-    b: "Mise en relation",
-    t: " : diffusion aux professionnels, propositions, acceptation, délais de réponse",
-  },
-  {
-    b: "Réservation et suivi",
-    t: " : statuts de la mission, position du prestataire, notifications, annulation",
-  },
-  { b: "Paiement, commission", t: " et reversement aux professionnels" },
-  { b: "Notation, avis, litiges", t: " et contact avec le support" },
-  {
-    b: "Cas limites",
-    t: " : demande sans réponse, double réservation, annulation tardive, perte de réseau",
-  },
+/** Section 02 — the eight audit axes, titles only. Le détail des points
+ * contrôlés est arrêté au cadrage, une fois les accès à l’Application ouverts. */
+export const axes = [
+  { n: "1", title: "Parcours métier et fonctionnel" },
+  { n: "2", title: "Expérience utilisateur et accessibilité" },
+  { n: "3", title: "Code et architecture mobile" },
+  { n: "4", title: "Back-end, API et données" },
+  { n: "5", title: "Sécurité", pill: "OWASP Mobile Top 10" },
+  { n: "6", title: "Performance et stabilité" },
+  { n: "7", title: "Conformité et publication" },
+  { n: "8", title: "Mesure, notifications et back-office" },
 ] as const;
 
-export const audit2 = [
-  {
-    b: "Premier usage",
-    t: " : clarté de la promesse, nombre d’étapes avant la première demande",
-  },
-  {
-    b: "Frictions et abandons",
-    t: " sur les parcours clés, en particulier la demande et le paiement",
-  },
-  {
-    b: "Cohérence visuelle",
-    t: " : composants, typographie, couleurs, icônes, états vides et chargements",
-  },
-  { b: "Messages d’erreur", t: " : compréhension, ton, action proposée à l’utilisateur" },
-  {
-    b: "Accessibilité",
-    t: " : contrastes, zones tactiles, VoiceOver et TalkBack, grands textes",
-  },
-  { b: "Rendu multi-écrans", t: " sur iOS et Android, petits et grands formats" },
-] as const;
-
-export const audit3 = [
-  {
-    b: "Technologie utilisée",
-    t: " (natif, React Native, Flutter…) et pertinence pour la suite du projet",
-  },
-  {
-    b: "Organisation du code",
-    t: " : séparation des responsabilités, gestion de l’état, navigation",
-  },
-  { b: "Dette technique", t: " : duplication, code mort, complexité, conventions absentes" },
-  {
-    b: "Dépendances",
-    t: " : versions obsolètes, bibliothèques abandonnées, vulnérabilités connues",
-  },
-  {
-    b: "Tests existants",
-    t: " : couverture, fiabilité, parcours critiques non protégés",
-  },
-  {
-    b: "Build et publication",
-    t: " : environnements, gestion des versions, signature, intégration continue",
-  },
-] as const;
-
-export const audit4 = [
-  {
-    b: "Architecture serveur",
-    t: " : services, hébergement, base de données, fonctions cloud",
-  },
-  { b: "Conception de l’API", t: " : cohérence, versionnement, gestion des erreurs, pagination" },
-  {
-    b: "Modèle de données",
-    t: " : structure, intégrité, index, historique des missions et des paiements",
-  },
-  {
-    b: "Temps réel",
-    t: " : géolocalisation, mise à jour des statuts, notifications push",
-  },
-  { b: "Exploitation", t: " : sauvegardes, supervision, journaux et alertes" },
-  {
-    b: "Coûts et capacité",
-    t: " : facture d’infrastructure et aptitude à absorber la croissance",
-  },
-] as const;
-
-export const audit5 = [
-  {
-    b: "Authentification et sessions",
-    t: " : jetons, expiration, révocation, stockage sur l’appareil",
-  },
-  {
-    b: "Contrôle des accès",
-    t: " : aucun utilisateur ne doit voir la demande, l’adresse ou le paiement d’un autre",
-  },
-  {
-    b: "Séparation des rôles",
-    t: " : particulier, professionnel, opérateur de lift, administrateur",
-  },
-  { b: "Secrets exposés", t: " : clés d’API présentes dans l’application ou dans le dépôt" },
-  {
-    b: "Données sur l’appareil",
-    t: " : stockage local, journaux, cache, captures d’écran",
-  },
-  {
-    b: "Communications",
-    t: " : chiffrement, validation des certificats, points d’accès exposés",
-  },
-  {
-    b: "Règles de la base et du stockage",
-    t: " : photos, pièces justificatives, documents des professionnels",
-  },
-] as const;
-
-export const audit6 = [
-  {
-    b: "Démarrage et fluidité",
-    t: " : temps d’ouverture, navigation, réactivité des écrans clés",
-  },
-  {
-    b: "Stabilité",
-    t: " : taux de plantage et erreurs remontées par l’outil de suivi en place",
-  },
-  {
-    b: "Batterie et données",
-    t: " : coût de la géolocalisation, en particulier en arrière-plan",
-  },
-  { b: "Poids de l’application", t: " et des images téléchargées" },
-  { b: "Réseau lent ou coupé", t: " : comportement, reprise, messages affichés" },
-] as const;
-
-export const audit7 = [
-  {
-    b: "RGPD",
-    t: " : consentements, géolocalisation, politique de confidentialité, conservation, droits",
-  },
-  {
-    b: "Suppression du compte",
-    t: " depuis l’application, exigée par Apple comme par Google",
-  },
-  {
-    b: "Exigences des stores",
-    t: " : permissions déclarées, fiches de confidentialité, niveau d’API Android ciblé",
-  },
-  {
-    b: "Paiement",
-    t: " : prestataire utilisé, aucune donnée de carte conservée par l’application",
-  },
-  {
-    b: "Mentions et conditions",
-    t: " : mentions légales, CGU, CGV et points propres à une plateforme de mise en relation",
-  },
-] as const;
-
-export const audit8 = [
-  {
-    b: "Mesure d’audience",
-    t: " : événements suivis, entonnoir de conversion, fiabilité des données",
-  },
-  { b: "Notifications push", t: " : pertinence, délivrabilité, consentement" },
-  {
-    b: "Avis des stores",
-    t: " : irritants récurrents signalés par les utilisateurs de Laap",
-  },
-  {
-    b: "Back-office",
-    t: " : outils de l’équipe pour valider les professionnels, traiter les litiges et rembourser",
-  },
-] as const;
-
-/** Section 03 — the four written deliverables. */
+/** Section 03 — the three written deliverables. */
 export const deliverables = [
   {
     n: "1",
@@ -235,12 +68,6 @@ export const deliverables = [
     navy: false,
     title: "Plan de remédiation priorisé",
     text: "Feuille de route en trois horizons (urgent, court terme, moyen terme), avec une estimation de charge pour chaque tâche à réaliser.",
-  },
-  {
-    n: "4",
-    navy: true,
-    title: "Registre des constats",
-    text: "Tableur listant chaque constat avec son identifiant, sa criticité, sa charge estimée et son statut, prêt à devenir la liste de travail de l’équipe.",
   },
 ] as const;
 
@@ -287,29 +114,6 @@ export const investment = [
   },
 ] as const;
 
-/** Section 04 — échéancier : 2 versements de 50 %, soit 1 000 €, puis les
- * travaux, facturés ultérieurement sur devis séparé. */
-export const payments = [
-  {
-    pct: "50 %",
-    when: "À la signature",
-    desc: "Déclenche l’ouverture des accès et le démarrage de l’audit",
-    amount: "500 €",
-  },
-  {
-    pct: "50 %",
-    when: "À la remise du rapport",
-    desc: "Rapport complet, synthèse, plan de remédiation et registre des constats",
-    amount: "500 €",
-  },
-  {
-    pct: "ENSUITE",
-    when: "Réalisation des tâches",
-    desc: "Corrections et recommandations issues de l’audit, facturées ultérieurement",
-    amount: "Sur devis",
-  },
-] as const;
-
 /** Section 05 — déroulé de la semaine d’audit. */
 export const days = [
   {
@@ -335,7 +139,7 @@ export const days = [
   {
     tag: "JOUR 5",
     title: "Rapport & remise",
-    desc: "Rédaction du rapport, de la synthèse, du plan de remédiation et du registre, puis remise au Client",
+    desc: "Rédaction du rapport, de la synthèse et du plan de remédiation, puis remise au Client",
   },
 ] as const;
 

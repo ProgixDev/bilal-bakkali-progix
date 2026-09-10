@@ -1,42 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils";
 import { BadgeHeading, InfoBox, Pill, SectionHeader, Strong, SubHeading } from "./primitives";
-import {
-  audit1,
-  audit2,
-  audit3,
-  audit4,
-  audit5,
-  audit6,
-  audit7,
-  audit8,
-  days,
-  deliverables,
-  investment,
-  payments,
-  severities,
-  team,
-  trust,
-} from "./content";
+import { axes, days, deliverables, investment, severities, team, trust } from "./content";
 import styles from "./devis.module.css";
-
-function CheckList({ items }: { items: ReadonlyArray<{ b: string; t: string }> }) {
-  return (
-    <div className={styles.checkGrid}>
-      {items.map((i) => (
-        <div key={i.b + i.t} className={styles.check}>
-          <span className={styles.checkMark} aria-hidden="true">
-            ✓
-          </span>
-          <span>
-            <Strong>{i.b}</Strong>
-            {i.t}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 /** Photos d’équipe. Images déjà redimensionnées et compressées dans public/equipe. */
 function TeamStrip() {
@@ -109,26 +75,24 @@ export function BodySections() {
           <SectionHeader
             num="02 — PÉRIMÈTRE"
             title="Ce que couvre l’audit"
-            lead="Huit axes, de ce que voit l’utilisateur jusqu’à ce qui tourne sur le serveur. Chaque point ci-dessous est vérifié sur l’Application réelle, pour les trois profils d’utilisateurs et sur les deux plateformes."
+            lead="Huit axes, de ce que voit l’utilisateur jusqu’à ce qui tourne sur le serveur, examinés sur l’Application réelle et sur les deux plateformes. Le détail des points contrôlés est arrêté lors du cadrage, une fois les accès ouverts."
           />
-          <SubHeading first>1 · Parcours métier et fonctionnel</SubHeading>
-          <CheckList items={audit1} />
-          <SubHeading>2 · Expérience utilisateur et accessibilité</SubHeading>
-          <CheckList items={audit2} />
-          <SubHeading>3 · Code et architecture mobile</SubHeading>
-          <CheckList items={audit3} />
-          <SubHeading>4 · Back-end, API et données</SubHeading>
-          <CheckList items={audit4} />
-          <SubHeading>
-            5 · Sécurité <Pill>OWASP Mobile Top 10</Pill>
-          </SubHeading>
-          <CheckList items={audit5} />
-          <SubHeading>6 · Performance et stabilité</SubHeading>
-          <CheckList items={audit6} />
-          <SubHeading>7 · Conformité et publication</SubHeading>
-          <CheckList items={audit7} />
-          <SubHeading>8 · Mesure, notifications et back-office</SubHeading>
-          <CheckList items={audit8} />
+          <div className={styles.grid2}>
+            {axes.map((a, idx) => (
+              <div key={a.n} className={cn(styles.card, styles.lift)}>
+                <h3 className={styles.cardTitle} style={{ margin: 0 }}>
+                  <span
+                    className={cn(styles.cardNum, idx % 2 === 1 && styles.cardNumNavy)}
+                    aria-hidden="true"
+                  >
+                    {a.n}
+                  </span>
+                  {a.title}
+                  {"pill" in a && <Pill>{a.pill}</Pill>}
+                </h3>
+              </div>
+            ))}
+          </div>
           <p className={styles.note}>
             Les contrôles de sécurité suivent le référentiel <Strong>OWASP Mobile Top 10</Strong> et
             les exigences <Strong>MASVS</Strong>. Ils sont non destructifs : aucune donnée réelle
@@ -145,7 +109,7 @@ export function BodySections() {
             title="Ce que vous recevez"
             lead="Un rapport qui se lit à deux niveaux : une synthèse pour décider, un détail pour agir. Chaque constat est prouvé, classé et chiffré, afin que la suite du projet parte de faits et non d’impressions."
           />
-          <div className={styles.grid2}>
+          <div className={styles.grid3}>
             {deliverables.map((d) => (
               <div key={d.n} className={cn(styles.card, styles.lift)}>
                 <h3 className={styles.cardTitle}>
@@ -185,7 +149,7 @@ export function BodySections() {
           <SectionHeader
             num="04 — INVESTISSEMENT"
             title="Votre investissement"
-            lead="1 000 € au total, réglés en 2 versements : 50 % à la signature, 50 % à la remise du rapport. L’audit et l’ensemble de ses livrables sont compris, sans supplément."
+            lead="1 000 € au total, réglés en une seule fois avant le démarrage de l’audit. L’audit et l’ensemble de ses livrables sont compris, sans supplément."
           />
           <div className={styles.tableWrap}>
             <table className={styles.table}>
@@ -213,7 +177,7 @@ export function BodySections() {
                 ))}
                 <tr className={styles.tableTotal}>
                   <td>
-                    <strong>TOTAL · 50 % / 50 %</strong>
+                    <strong>TOTAL · PAIEMENT UNIQUE</strong>
                   </td>
                   <td className={styles.tableTotalAmount}>1 000 €</td>
                 </tr>
@@ -228,8 +192,9 @@ export function BodySections() {
               <div className={styles.totalEyebrow}>Investissement · montant total</div>
               <div className={styles.totalValue}>1 000 €</div>
               <div className={styles.totalNote}>
-                Réglé en <Strong>2 versements de 50 %</Strong>, audit des huit axes, rapport
-                complet, plan de remédiation et restitution compris. Prix ferme, aucun coût caché.
+                Réglé en <Strong>une seule fois, avant la réalisation de l’audit</Strong>, audit des
+                huit axes, rapport complet, plan de remédiation et restitution compris. Prix ferme,
+                aucun coût caché.
               </div>
             </div>
           </div>
@@ -238,21 +203,12 @@ export function BodySections() {
             ni taxe de vente (service transfrontalier, autoliquidation par le preneur le cas
             échéant). <Strong>1 000 € est le net à payer.</Strong>
           </InfoBox>
-          <SubHeading>Échéancier de paiement</SubHeading>
-          <div className={styles.grid3} style={{ margin: "6px 0 16px" }}>
-            {payments.map((p) => (
-              <div key={p.when} className={cn(styles.payCard, styles.lift)}>
-                <div className={styles.payPct}>{p.pct}</div>
-                <div className={styles.payWhen}>{p.when}</div>
-                <div className={styles.payDesc}>{p.desc}</div>
-                <div className={styles.payAmount}>{p.amount}</div>
-              </div>
-            ))}
-          </div>
+          <SubHeading>Modalités de paiement</SubHeading>
           <p style={{ fontSize: "13px", color: "var(--slate)", margin: 0, lineHeight: 1.6 }}>
-            <Strong>500 €</Strong> à la signature, <Strong>500 €</Strong> à la remise du rapport.
-            Paiement par <Strong>Stripe</Strong> ou <Strong>virement bancaire</Strong>.{" "}
-            <Strong>L’audit ne débute pas avant le premier versement.</Strong>
+            <Strong>1 000 €</Strong> payables <Strong>en une seule fois</Strong>, à la signature et
+            avant la réalisation de l’audit. Aucun échéancier. Paiement par <Strong>Stripe</Strong>{" "}
+            ou <Strong>virement bancaire</Strong>.{" "}
+            <Strong>L’audit ne débute pas avant réception du paiement.</Strong>
           </p>
           <InfoBox icon="i" title="La réalisation des tâches sera facturée ultérieurement">
             Le présent Devis couvre l’<Strong>audit et ses livrables uniquement</Strong>. Les
@@ -289,8 +245,8 @@ export function BodySections() {
           </div>
           <InfoBox icon="i" title="Le délai court à réception des accès">
             Les <Strong>5 jours ouvrés</Strong> démarrent le jour ouvré qui suit la réception du{" "}
-            <Strong>premier versement</Strong> et de l’<Strong>ensemble des accès</Strong> listés en
-            section 06. Un accès manquant ou incomplet décale d’autant la remise du rapport.
+            <Strong>paiement</Strong> et de l’<Strong>ensemble des accès</Strong> listés en section
+            06. Un accès manquant ou incomplet décale d’autant la remise du rapport.
           </InfoBox>
         </div>
       </section>
@@ -351,9 +307,9 @@ export function BodySections() {
         <div className={styles.container}>
           <SectionHeader num="07 — APRÈS L’AUDIT" title="Propriété, confidentialité & suite" />
           <InfoBox variant="ok" icon="★" title="Le rapport vous appartient">
-            Le rapport, la synthèse, le plan de remédiation et le registre des constats deviennent{" "}
-            <Strong>la propriété du Client à paiement complet</Strong>. Il est libre de les
-            transmettre à son équipe, à un autre prestataire ou à un investisseur.
+            Le rapport, la synthèse et le plan de remédiation deviennent{" "}
+            <Strong>la propriété du Client dès leur remise</Strong>. Il est libre de les transmettre
+            à son équipe, à un autre prestataire ou à un investisseur.
           </InfoBox>
           <SubHeading>Confidentialité</SubHeading>
           <ul className={styles.arrowList}>

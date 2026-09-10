@@ -198,7 +198,7 @@ export function SignatureSection() {
         <div className={styles.formuleRecap}>
           <span>Offre retenue :</span>
           <span className={styles.formuleRecapValue}>
-            Audit de l’application Laap · 1 000 € (50 % / 50 %)
+            Audit de l’application Laap · 1 000 € (paiement unique)
           </span>
         </div>
 

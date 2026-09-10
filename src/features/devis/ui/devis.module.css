@@ -649,39 +649,6 @@
   line-height: 1.55;
 }
 
-/* ---------- Checklist (included items) ---------- */
-.checkGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-  gap: 8px 26px;
-  margin: 10px 0;
-}
-
-.check {
-  display: flex;
-  gap: 10px;
-  font-size: 13.8px;
-  color: var(--slate);
-  padding: 6px 0;
-  align-items: flex-start;
-  line-height: 1.5;
-}
-
-.checkMark {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--ok-bg);
-  color: var(--ok);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
 /* ---------- Arrow list ---------- */
 .arrowList {
   list-style: none;
